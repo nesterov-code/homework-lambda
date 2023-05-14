@@ -6,16 +6,15 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-
-    BinaryOperator<Integer> divide = (x, y) -> {
-        /*
-        Ошибка из-за отсутствия проверки на ноль для Y.
-        */
-        try {
+    /*
+        Ошибка из-за отсутствия проверки на ноль для y.
+     */
+    BinaryOperator<Integer> devide = (x, y) -> {
+        if(y != 0) {
             return x / y;
-        } catch (ArithmeticException exception) {
-            System.out.print("На ноль делить нельзя! Y = ");
-            return y;
+        } else {
+            System.out.println("На ноль делить нельзя!");
+            return Integer.MIN_VALUE;
         }
     };
 
